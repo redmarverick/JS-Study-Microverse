@@ -1,20 +1,30 @@
-function sumAll(arr) {
-  let x=arr[0], y=arr[1],soma=0;
-  if(x<y)
+function destroyer(arr) {
+  let arrCorr=[], list=[], lNum=[], contem=false;
+  lNum=arguments[0]
+  //console.log(lNum);
+  for (let i=1;i<arguments.length;i++)
   {
-    for(let i=x;i<y+1;i++)
-    {
-      soma+=i;
-    }
+    list.push(arguments[i]);
   }
-  else
+   //console.log(list);
+  for(let i=0;i<lNum.length;i++)
   {
-    for(let i=y;i<x+1;i++)
-    {
-      soma+=i;
-    }
+    contem=false;
+    for(let j=0;j<list.length;j++)
+      {
+        if(lNum[i]==list[j])
+        {
+          break;
+          contem=true;
+        }
+        else if(contem==false&&j==list.length-1)
+        {
+          arrCorr.push(lNum[i]);
+        }
+      }
   }
-  return soma;
+  return arrCorr;
+
 }
 
-console.log(sumAll([1, 4]));
+console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
