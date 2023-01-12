@@ -1,31 +1,25 @@
-function translatePigLatin(str) {
-  let str2=""
+function pairElement(str) {
+  let dna=[];
   for(let i=0;i<str.length;i++)
   {
-    if(str[i]=="a"||str[i]=="e"||str[i]=="i"||str[i]=="o"||str[i]=="u")
-    {
-      if(i==0)
-      {
-        str2=str+"way";
+    switch(str[i]) {
+      case "A":
+        dna.push(["A","T"]);
         break;
-      }
-      else
-      {
-        str2=str.substring(i)
-        for(let j=0;j<i;j++)
-        {str2+=str[j];}
-        str2+="ay";
+      case "T":
+        dna.push(["T","A"]);
         break;
-      }
-    }
-    if(i==str.length-1 && str2=="")
-    {
-      str2=str+"ay";
+      case "G":
+        dna.push(["G","C"]);
+        break;
+      case "C":
+        dna.push(["C","G"]);
+        break;
+      default:
     }
   }
-  
-  
-  return str2;
+  //console.log(dna);
+  return dna;
 }
 
-translatePigLatin("consonant");
+pairElement("ATCGA");
