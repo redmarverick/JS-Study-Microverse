@@ -1,30 +1,31 @@
-function destroyer(arr) {
-  let arrCorr=[], list=[], lNum=[], contem=false;
-  lNum=arguments[0]
-  //console.log(lNum);
-  for (let i=1;i<arguments.length;i++)
+function translatePigLatin(str) {
+  let str2=""
+  for(let i=0;i<str.length;i++)
   {
-    list.push(arguments[i]);
-  }
-   //console.log(list);
-  for(let i=0;i<lNum.length;i++)
-  {
-    contem=false;
-    for(let j=0;j<list.length;j++)
+    if(str[i]=="a"||str[i]=="e"||str[i]=="i"||str[i]=="o"||str[i]=="u")
+    {
+      if(i==0)
       {
-        if(lNum[i]==list[j])
-        {
-          break;
-          contem=true;
-        }
-        else if(contem==false&&j==list.length-1)
-        {
-          arrCorr.push(lNum[i]);
-        }
+        str2=str+"way";
+        break;
       }
+      else
+      {
+        str2=str.substring(i)
+        for(let j=0;j<i;j++)
+        {str2+=str[j];}
+        str2+="ay";
+        break;
+      }
+    }
+    if(i==str.length-1 && str2=="")
+    {
+      str2=str+"ay";
+    }
   }
-  return arrCorr;
-
+  
+  
+  return str2;
 }
 
-console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+translatePigLatin("consonant");
