@@ -1,25 +1,34 @@
-function pairElement(str) {
-  let dna=[];
+function convertHTML(str) {
+  let chars="&<>\"\'",str2="";
   for(let i=0;i<str.length;i++)
   {
-    switch(str[i]) {
-      case "A":
-        dna.push(["A","T"]);
-        break;
-      case "T":
-        dna.push(["T","A"]);
-        break;
-      case "G":
-        dna.push(["G","C"]);
-        break;
-      case "C":
-        dna.push(["C","G"]);
-        break;
-      default:
+    if(chars.includes(str[i])==true)
+    {
+      switch(str[i]){
+        case "&":str2+="&amp;"
+          break;
+        case "<":
+          str2+="&lt;"
+          break;
+        case ">":
+          str2+="&gt;"
+          break;
+        case "\'":
+          str2+="&apos;"
+          break;
+        case "\"":
+          str2+="&quot;"
+          break;
+        default:
+          break
+      }
+    }
+    else
+    {
+      str2+=str[i];
     }
   }
-  //console.log(dna);
-  return dna;
+  return str2;
 }
 
-pairElement("ATCGA");
+convertHTML("Dolce & Gabbana");
